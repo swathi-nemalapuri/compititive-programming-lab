@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+public static int divide(int div, int dis) {
+
+       
+
+        boolean neg = (div < 0) ^ (dis < 0);
+
+       
+
+        long low = 0;
+        long high = div;
+        long ans = 0;
+
+        while (low <= high) {
+            long mid = low + (high - low) / 2;
+
+            if (mid * dis <= div) {
+                ans = mid;
+                low = mid + 1;
+            } else {
+                high = mid - 1;
+            }
+        }
+
+        return (int) (neg ? -ans : ans);}
+    
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+     Scanner obj=new Scanner(System.in);
+     int div=obj.nextInt();
+     
+     int dis=obj.nextInt();
+     System.out.println(divide(div,dis));
+     
+     
+     
+        
+    }
+        
+        
