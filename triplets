@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+public static void uniqueTriplet(int[] nums,int x){
+    Arrays.sort(nums);
+    boolean found=false;
+  for (int i = 0; i < nums.length - 2; i++) {
+    for (int j = i + 1; j < nums.length - 1; j++) {
+        for (int k = j + 1; k < nums.length; k++) {
+            if (nums[i] + nums[j] + nums[k] == x) {
+                System.out.println(nums[i]+" "+ nums[j]+" "+ nums[k]);
+                found=true;
+            }
+        }
+    }
+}
+  if(!found)  System.out.println("No Triplet Found");
+}
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        Scanner obj=new Scanner(System.in);
+        int n=obj.nextInt();
+       int[] nums= new int[n];
+       for(int i=0;i<nums.length;i++){
+        nums[i]=obj.nextInt();
+       }
+       int x=obj.nextInt();
+        uniqueTriplet(nums,x);
+        
+        
+        
+    }
+}
