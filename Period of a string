@@ -1,0 +1,31 @@
+class period{
+public static int prefixcheck(String s){
+String match="";
+for(int i=1;i<s.length();i++){
+char ch=s.charAt(i);
+match=s.substring(0,i);
+if(!(match.contains(ch+""))) continue;
+else
+break;
+
+
+
+}
+
+System.out.println(match.length());
+return match.length();
+
+
+
+}
+
+public static void main(String[] args){
+String s="abcdab";
+
+System.out.println(prefixcheck(s));
+
+
+
+
+
+}
