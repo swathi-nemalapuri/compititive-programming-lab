@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        /* Enter your code here. Read input from STDIN. Print output to STDOUT. Your class should be named Solution. */
+        
+     Scanner obj=new Scanner(System.in);
+     String s=obj.nextLine();
+     String pre="",suff="",match="";
+     
+     for(int i=1;i<s.length();i++){
+        pre=s.substring(0,i);
+        suff=s.substring(s.length()-i,s.length());
+     if(pre.equals(suff)) match=pre;   
+        
+        
+     }   
+        
+     System.out.println(match);  
+        
+        obj.close();
+    }
+    
+    
+    
+}
