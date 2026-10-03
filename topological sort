@@ -1,0 +1,59 @@
+import java.util.*;
+
+class Solution {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int V = sc.nextInt();
+        int E = sc.nextInt();
+
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        int[] indegree = new int[V];
+
+        for (int i = 0; i < V; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < E; i++) {
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            graph.get(u).add(v);
+            indegree[v]++;
+        }
+
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
+        for (int i = 0; i < V; i++) {
+            if (indegree[i] == 0) {
+                pq.add(i);
+            }
+        }
+
+        StringBuilder ans = new StringBuilder();
+        int count = 0;
+
+        while (!pq.isEmpty()) {
+            int u = pq.poll();
+
+            if (ans.length() > 0) {
+                ans.append(" ");
+            }
+            ans.append(u);
+            count++;
+
+            for (int v : graph.get(u)) {
+                indegree[v]--;
+
+                if (indegree[v] == 0) {
+                    pq.add(v);
+                }
+            }
+        }
+
+        if (count != V) {
+            System.out.println("-1");
+        } else {
+            System.out.println(ans);
+        }
+    }
+}
